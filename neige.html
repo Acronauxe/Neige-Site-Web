@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="neige.css">
+    <title>Neige</title>
+</head>
+
+
+
+<body>
+
+
+    <script>
+
+        var body=document.querySelector("body");
+
+        var flakesBody="";
+
+        var n=50;
+
+        for (var i=0;i<n;i++){
+            var number0 = Math.random()*100;
+            if (number0<50){
+                flakesBody+=`<img src="snowflake.png" alt="" class="flake${i}">`;
+            }else{
+                flakesBody+=`<img src="snowball.png" alt="" class="flake${i}">`;
+            }
+        }
+
+        body.innerHTML=flakesBody;
+
+        var flakeElement="";
+
+        var position=0;
+
+        var List=[];
+
+        var positionList=[];
+
+        for(var i=0;i<n;i++){
+            var flakeClass= ".flake"+i;
+            var flakeElement = document.querySelector((flakeClass));
+            List.push(flakeElement)
+            var number = Math.random()*100;
+            var number2 = Math.random()*100;
+            positionList.push(number);
+            List[i].style.left=number2+"%";
+        }
+
+        var len = List.length;
+
+        function flakeMovement(){
+            for(var i=0;i<len;i++){
+                positionList[i]=positionList[i]+1;
+                if (positionList[i]>100){
+                    positionList[i]=0
+                }
+                List[i].style.top=positionList[i]+"%";
+                console.log(positionList[i]);
+            }
+        }
+
+
+        setInterval(flakeMovement,50)
+
+        
+
+    </script>
+
+</body>
+
+
+
+</html>
